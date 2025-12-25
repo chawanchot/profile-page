@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 80px; 
+
+  font-family: "Kanit", sans-serif;
+}
+
+.custom-drop-shadow {
+  filter: drop-shadow(1px 1px 30px #c800ff) !important;
+}
+
+.animate-typewriter {
+  animation: typewriter 4s steps(44) infinite,
+    blinkTextCursor 500ms steps(44) infinite;
+}
+
+.animate-custom-bounce {
+  animation: customBounce 1.5s infinite;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+
+  50%, 100% {
+    width: 14.3em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, .75);
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes customBounce {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
