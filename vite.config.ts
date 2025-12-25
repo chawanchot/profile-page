@@ -7,6 +7,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     plugins: [react(), tailwindcss()],
     base: "/profile-page",
+    build: {
+        outDir: "./dist",
+    },
     resolve: {
         alias: {
             "@pages": path.resolve(__dirname, "src/pages"),

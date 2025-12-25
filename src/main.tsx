@@ -11,6 +11,8 @@ createRoot(document.getElementById("root")!).render(
             },
         }}
     >
+        {/* <BrowserRouter basename="/profile-page">
+        </BrowserRouter> */}
         <App />
     </ConfigProvider>
 );

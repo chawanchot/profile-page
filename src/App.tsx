@@ -95,7 +95,7 @@ const App = () => {
             {/* NAV */}
             <div className="bg-[#1A0B2E] h-16 px-[5%] lg:px-[10%] xl:px-[20%] w-full flex justify-between items-center fixed top-0 left-0 z-20">
                 <div className="text-white flex">
-                    <a href="#main">PORTFOLIO</a>
+                    <a href="#main">PORTFOLIO V.2</a>
                 </div>
                 <div className="cursor-pointer flex sm:hidden">
                     <MenuOutlined
