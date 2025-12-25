@@ -262,11 +262,12 @@ const App = () => {
                             ActivityMate Application
                         </div>
                         <div className="bg-[#7501e933] backdrop-blur-xl rounded-xl w-96 text-white text-xs p-5 text-center flex items-center">
-                            A mobile application built with React Native and
-                            Firebase for finding friends to join activities. The
-                            app supports Google and Facebook authentication,
-                            activity location selection using Google Places API,
-                            and group chat functionality.
+                            A mobile application developed as a final-year
+                            project, built with React Native and Firebase for
+                            finding friends to join activities. The app supports
+                            Google and Facebook authentication, activity
+                            location selection using Google Places API, and
+                            group chat functionality.
                         </div>
                     </div>
                 </div>
