@@ -1,29 +1,19 @@
-import ME_IMAGE from "@assets/Me.png";
+import ME_IMAGE from "@assets/Me2.png";
 import ARROW_IMAGE from "@assets/Arrow.png";
-import ROUTER_WORKSHOP_IMAGE from "@assets/workshopRounter.png";
-import STYLE_WORKSHOP_IMAGE from "@assets/workshopStyle.png";
-import TODOLIST_WORKSHOP_IMAGE from "@assets/workshopTodoList.png";
-import CHECKLIST_WORKSHOP_IMAGE from "@assets/workshopChecklist.png";
-import USER_WORKSHOP_IMAGE from "@assets/workshopRTK.png";
-import ACTIVITY_PROJECT_IMAGE from "@assets/projectActivity.png";
 import { Popover, Timeline } from "antd";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import {
-    DiscordFilled,
-    GitlabFilled,
-    GoogleOutlined,
-    MenuOutlined,
-} from "@ant-design/icons";
+import { DiscordFilled, GoogleOutlined, MenuOutlined } from "@ant-design/icons";
 import ProjectListComponent from "@components/ProjectListComponent";
 import SkillsBoxComponent from "@components/SkillsBoxComponent";
 import MobileMenuComponent from "@components/MobileMenuComponent";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 type WorkshopType = {
     title: string;
-    description: string;
-    image: string;
+    description: string[];
+    url?: string;
 };
 
 type SkillsType = {
@@ -33,53 +23,47 @@ type SkillsType = {
 
 const WORKSHOP_DATA: WorkshopType[] = [
     {
-        title: "React Router Application",
-        description:
-            "A simple React application created to practice routing concepts using React Router. The project focuses on page navigation, layout structure, and component rendering based on routes.",
-        image: ROUTER_WORKSHOP_IMAGE,
+        title: "ONE GEO SURVEY Co., Ltd. - Frontend Developer Intern (4 Months)",
+        description: [
+            "Trained in the company's Tech Stack for development applications.",
+            "Developed UI Components for internal company projects using React and TypeScript, following designs from the UX/UI team.",
+            "Connected data with RESTful API according to documentation to manage data between Frontend and Backend.",
+            "Developed projects collaboratively using Git for code version control.",
+        ],
     },
     {
-        title: "Tailwind & Ant Design",
-        description:
-            "An extended version of the React Router project, enhanced with Tailwind CSS and Ant Design. The application focuses on responsive design, UI styling, and improved user experience across different screen sizes.",
-        image: STYLE_WORKSHOP_IMAGE,
+        title: "INTERNSHIP PROJECT - Website for displaying agricultural statistics and soil quality",
+        description: [
+            "Developed an Interactive Map for displaying agricultural statistics using MapLibre and Google Maps API to show product buying locations.",
+            "Integrated GeoJSON soil quality data onto the map for data analysis.",
+        ],
+        url: "https://agri-stats.chawanchot.me/"
     },
     {
-        title: "Todo List Application",
-        description:
-            "A simple web application created to practice React components, state, and props. Users can add, edit, and delete tasks with real-time UI updates.",
-        image: TODOLIST_WORKSHOP_IMAGE,
-    },
-    {
-        title: "Checklist Application",
-        description:
-            "An interactive React TypeScript application built to practice component-based architecture, state management, props usage, and logic handling through dynamic checklist interactions.",
-        image: CHECKLIST_WORKSHOP_IMAGE,
-    },
-    {
-        title: "User Management Application",
-        description:
-            "A React application that fetches and manages user data using RTK Query. The project supports viewing, adding, and deleting users with pagination.",
-        image: USER_WORKSHOP_IMAGE,
+        title: "SENIOR PROJECT - Application for finding friends to do activities",
+        description: [
+            "Developed a mobile application using React Native and Firebase, supporting activity filtering by sub-district, district, and province.",
+            "Developed a Social Authentication system via Facebook and Google platforms using Firebase Authentication.",
+        ],
     },
 ];
 
 const SKILLS_DATA: SkillsType[] = [
     {
         title: "Languages",
-        data: ["Javascript", "Typescript"],
+        data: ["Javascript", "Typescript", "Go"],
     },
     {
         title: "Other",
-        data: ["HTML", "CSS"],
+        data: ["HTML", "CSS", "MySQL"],
     },
     {
         title: "Tools",
-        data: ["VSCode", "Git", "GitLab"],
+        data: ["VSCode", "Git", "DBeaver", "Bruno", "Postman"],
     },
     {
         title: "Frameworks",
-        data: ["React", "Express.js", "TailwindCSS", "AntDesign"],
+        data: ["React", "TailwindCSS", "AntDesign", "Node.js", "Express.js"],
     },
 ];
 
@@ -114,9 +98,6 @@ const App = () => {
                         <a href="#skills">Skills</a>
                     </li>
                     <li className="cursor-pointer hover:text-shadow-white hover:text-shadow-xs">
-                        <a href="#projects">Projects</a>
-                    </li>
-                    <li className="cursor-pointer hover:text-shadow-white hover:text-shadow-xs">
                         <a href="#contacts">Contacts</a>
                     </li>
                 </ul>
@@ -132,7 +113,7 @@ const App = () => {
                 <div className="w-full relative flex gap-2 sm:gap-7">
                     <img
                         src={ME_IMAGE}
-                        className="w-20 sm:w-28 lg:w-44 custom-drop-shadow"
+                        className="w-20 sm:w-28 lg:w-36 custom-drop-shadow rounded-2xl"
                     />
                     <div className="hidden absolute -top-24 sm:-right-16 lg:-right-28 sm:flex text-white w-full animate-custom-bounce">
                         <img src={ARROW_IMAGE} />
@@ -144,19 +125,19 @@ const App = () => {
                         </div>
                     </div>
                     <div className="flex flex-col mt-7">
-                        <div className="text-white text-lg sm:text-2xl md:text-3xl lg:text-4xl overflow-hidden whitespace-nowrap border-r-2 animate-typewriter">
-                            I'm a Computer Science student.
+                        <div className="text-white text-[16px] sm:text-2xl md:text-3xl lg:text-4xl overflow-hidden whitespace-nowrap border-r-2 animate-typewriter">
+                            I'm a New Computer Science Graduate.
                         </div>
                         <div className="text-white text-xs lg:text-sm">
-                            Currently, I'm an Intern at{" "}
+                            Currently seeking exciting opportunities in{" "}
                             <span className="text-[#7127BA]">
-                                One Geo Survey
+                                Software Developer
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div className="text-white mt-12 flex text-2xl" id="about">
+                <div className="text-white mt-8 md:mt-12 flex text-2xl" id="about">
                     <span className="text-[#7127BA]">#</span>about-me
                     <span className="border-t-2 border-[#7127BA] ms-2 w-40 mt-4.5"></span>
                 </div>
@@ -164,12 +145,12 @@ const App = () => {
                     data-aos="fade-right"
                     className="text-white text-xs lg:text-sm font-light mt-4"
                 >
-                    I'm a fourth-year Computer Science student who enjoys
-                    building things for the web. <br />
-                    As a Frontend Developer Intern, I like creating clean UI and
-                    improving user experience. <br />
-                    I'm always excited to learn new technologies and grow as a
-                    developer.
+                    A Computer Science fresh graduate with skills in Frontend
+                    Development using React and TypeScript. <br />
+                    Experienced in developing UI Components and API integration
+                    during internship. <br />
+                    Eager to learn new technologies to create efficient work for
+                    the organization.
                 </div>
 
                 <div className="text-white mt-10 flex text-2xl" id="education">
@@ -187,7 +168,18 @@ const App = () => {
                     }}
                     items={[
                         {
-                            title: "2018",
+                            title: "2022 - 2026",
+                            content: (
+                                <div className="flex flex-col">
+                                    Computer Science <span>GPAX 3.28</span>
+                                    <span className="text-[#7127BA]">
+                                        Loei Rajabhat University
+                                    </span>
+                                </div>
+                            ),
+                        },
+                        {
+                            title: "2018 - 2021",
                             content: (
                                 <div className="flex flex-col">
                                     Information Technology{" "}
@@ -196,18 +188,6 @@ const App = () => {
                                     </span>
                                 </div>
                             ),
-                        },
-                        {
-                            title: "2022 - NOW",
-                            content: (
-                                <div className="flex flex-col">
-                                    Computer Science{" "}
-                                    <span className="text-[#7127BA]">
-                                        Loei Rajabhat University
-                                    </span>
-                                </div>
-                            ),
-                            loading: true,
                         },
                     ]}
                 />
@@ -230,7 +210,8 @@ const App = () => {
                 </div>
 
                 <div className="text-white flex text-2xl mt-10" id="projects">
-                    <span className="text-[#7127BA]">#</span>practice-projects
+                    <span className="text-[#7127BA]">#</span>
+                    work-experience-and-projects
                     <span className="border-t-2 border-[#7127BA] ms-2 w-40 mt-4.5"></span>
                 </div>
                 <div className="flex flex-col gap-7 mt-4 overflow-hidden">
@@ -239,37 +220,9 @@ const App = () => {
                             key={index}
                             title={item.title}
                             description={item.description}
-                            image={item.image}
-                            position={index % 2 === 0 ? "left" : "right"}
+                            url={item.url}
                         />
                     ))}
-                </div>
-
-                <div className="text-white flex text-2xl mt-10">
-                    <span className="text-[#7127BA]">#</span>projects
-                    <span className="border-t-2 border-[#7127BA] ms-2 w-40 mt-4.5"></span>
-                </div>
-                <div
-                    data-aos="zoom-in"
-                    className="flex flex-col w-full items-center mt-4"
-                >
-                    <img
-                        src={ACTIVITY_PROJECT_IMAGE}
-                        className="h-80 rounded-lg"
-                    />
-                    <div className="flex flex-col mt-2 gap-2">
-                        <div className="text-[#CCD6F6] text-lg text-center">
-                            ActivityMate Application
-                        </div>
-                        <div className="bg-[#7501e933] backdrop-blur-xl rounded-xl w-96 text-white text-xs p-5 text-center flex items-center">
-                            A mobile application developed as a final-year
-                            project, built with React Native and Firebase for
-                            finding friends to join activities. The app supports
-                            Google and Facebook authentication, activity
-                            location selection using Google Places API, and
-                            group chat functionality.
-                        </div>
-                    </div>
                 </div>
 
                 <div className="text-white flex text-2xl mt-10" id="contacts">
@@ -277,6 +230,21 @@ const App = () => {
                     <span className="border-t-2 border-[#7127BA] ms-2 w-40 mt-4.5"></span>
                 </div>
                 <div data-aos="fade-right" className="mt-4 flex flex-col gap-2">
+                    <div className="flex items-center gap-1">
+                        <Popover
+                            content="Github"
+                            classNames={{
+                                container: "px-2! py-1! rounded!",
+                                content: "text-xs",
+                            }}
+                        >
+                            <FaGithub className="text-[#7127BA]! text-2xl" />
+                        </Popover>
+                        <span className="text-white text-sm">@chawanchot</span>
+                        <a href="https://github.com/chawanchot" target="_blank">
+                            <FaExternalLinkAlt className="text-white ms-1 text-xs" />
+                        </a>
+                    </div>
                     <div className="flex items-center gap-1">
                         <Popover
                             content="Email"
@@ -288,21 +256,7 @@ const App = () => {
                             <GoogleOutlined className="text-[#7127BA]! text-2xl" />
                         </Popover>
                         <span className="text-white text-sm">
-                            chawanchotit@gmail.com
-                        </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <Popover
-                            content="GitLab"
-                            classNames={{
-                                container: "px-2! py-1! rounded!",
-                                content: "text-xs",
-                            }}
-                        >
-                            <GitlabFilled className="text-[#7127BA]! text-2xl" />
-                        </Popover>
-                        <span className="text-white text-sm">
-                            @toy.chawanchot
+                            chawanchot.dev@gmail.com
                         </span>
                     </div>
                     <div className="flex items-center gap-1">

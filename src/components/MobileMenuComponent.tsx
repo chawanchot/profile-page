@@ -31,11 +31,6 @@ const MobileMenuComponent = ({ status = false, close }: PropsType) => {
                             </a>
                         </li>
                         <li className="cursor-pointer">
-                            <a href="#projects" onClick={() => close()}>
-                                Projects
-                            </a>
-                        </li>
-                        <li className="cursor-pointer">
                             <a href="#contacts" onClick={() => close()}>
                                 Contacts
                             </a>

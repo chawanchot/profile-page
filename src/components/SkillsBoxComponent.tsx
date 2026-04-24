@@ -11,7 +11,7 @@ const SkillsBoxComponent = ({ title, data }: PropsType) => {
             </div>
             <div className="text-sm text-gray-300 font-light p-2 flex flex-wrap">
                 {data.map((item, index) => (
-                    <span key={index} className="me-1">{item}</span>
+                    <span key={index} className="me-1">{index + 1 !== data.length ? item + "," : item}</span>
                 ))}
             </div>
         </div>

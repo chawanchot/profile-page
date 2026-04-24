@@ -1,27 +1,40 @@
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 type PropsType = {
     title: string;
-    description: string;
-    image: string;
-    position?: "left" | "right"
-}
+    description: string[];
+    url?: string;
+};
 
-const ProjectListComponent = ({ title, description, image, position="left" }: PropsType) => {
-
+const ProjectListComponent = ({ title, description, url }: PropsType) => {
     return (
         <div
             data-aos="fade-right"
-            className={`flex flex-col ${position === "left" ? "md:flex-row" : "md:flex-row-reverse"} w-full items-center`}
+            className={`flex flex-col md:flex-row w-full items-center`}
         >
-            <img
-                src={image}
-                className="w-96 h-fit rounded-lg"
-            />
-            <div className="flex flex-col mt-2 md:mt-0 gap-2">
-                <div className={`text-[#CCD6F6] text-lg text-center ${position === "left" ? "md:text-right" : "md:text-left"}`}>
-                    {title}
+            <div className="flex flex-col mt-2 md:mt-0 gap-1.5">
+                <div
+                    className={`text-[#CCD6F6] text-lg text-center md:text-left flex items-center gap-4`}
+                >
+                    {title}{" "}
+                    {url && (
+                        <span className="text-white">
+                            <a href={url} target="_blank">
+                                <FaExternalLinkAlt />
+                            </a>
+                        </span>
+                    )}
                 </div>
-                <div className={`bg-[#7501e933] backdrop-blur-xl ${position === "left" ? "md:-ms-16" : "md:-me-16"} rounded-xl w-80 text-white text-xs p-5 text-left flex items-center`}>
-                    {description}
+                <div
+                    className={`bg-[#7501e933] backdrop-blur-xl rounded-xl w-full text-white text-[13px] p-5 text-left flex items-center`}
+                >
+                    <div className="flex-col">
+                        {description.map((item, index) => (
+                            <div key={index}>
+                                <span className="me-1">-</span> {item}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
